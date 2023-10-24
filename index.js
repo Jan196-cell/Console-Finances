@@ -101,13 +101,30 @@ var total = 0;
 for (let i=0; i < finances.length; i++) {
   if (Array.isArray(finances[i])) {
     let subArray = 0;
-    for (let j = 0; j < finances[i].length; j++){
-      subArray += finances[j];
+    for (let j = 1; j < finances[i].length; j++){
+      subArray += finances[i][j];
     }
     total += subArray;
     }
 }
 return total;
 }
-
+var total = computeTotal(finances);
 console.log("Total: $" + total);
+
+// average of the changes in Profit/Losses
+
+  function listDifferences(finances) {
+    let difference =[];
+    for (let i=0; i < finances.length; i++) {
+      let subArray = 0;
+      for (let j = 1; j < finances[i].length; j++){
+        if (indexOf(j) !== 0 ) {
+          difference.push();
+        }
+      }
+    };
+    return difference;
+  }
+var difference = listDifferences(finances)
+console.log("list of differences: " + difference)

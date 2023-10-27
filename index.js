@@ -113,18 +113,33 @@ var total = computeTotal(finances);
 console.log("Total: $" + total);
 
 // average of the changes in Profit/Losses
+   /* change each month finances[i+1][j] - finances[i][j]
+      avarage chages = Total/(Number of months - 1) 
+      */
 
   function listDifferences(finances) {
-    let difference =[];
-    for (let i=0; i < finances.length; i++) {
-      let subArray = 0;
-      for (let j = 1; j < finances[i].length; j++){
-        if (indexOf(j) !== 0 ) {
-          difference.push();
-        }
-      }
-    };
-    return difference;
-  }
-var difference = listDifferences(finances)
-console.log("list of differences: " + difference)
+    var totalDifferences = 0;
+    var changeEachMonth = 0;
+    var greatest = 0;
+    var least = 0;
+    var change = 0;
+    for (let i=0; i < finances.length; i++) { 
+         changeEachMonth = finances[i+1][1] - finances[i][1];
+        //  console.log("List of changes: " + changeEachMonth)
+
+         totalDifferences += changeEachMonth;
+        //  console.log("total Differences: " + totalDifferences)
+
+           avarageChange = totalDifferences/(totalMonths - 1);
+           console.log("Avarage Change: " + avarageChange)
+
+         if (change > greatest) {
+          greatest = changeEachMonth;
+         }
+         if (change < least)  {
+          least = changeEastmonth;
+         }      
+      }      
+    }       
+    listDifferences(finances)
+

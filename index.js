@@ -123,13 +123,9 @@ console.log("Total: $" + total);
     var greatest = 0;
     var least = 0;
     var change = 0;
-    for (let i=0; i < finances.length; i++) { 
-         changeEachMonth = finances[i+1][1] - finances[i][1];
-        //  console.log("List of changes: " + changeEachMonth)
-
-         totalDifferences += changeEachMonth;
-        //  console.log("total Differences: " + totalDifferences)
-
+    for (let i=0; i < finances.length - 1; i++) {        
+         changeEachMonth = finances[i+1][1] - finances[i][1];         
+           totalDifferences += changeEachMonth;
            avarageChange = totalDifferences/(totalMonths - 1);
            console.log("Avarage Change: " + avarageChange)
 
@@ -137,9 +133,8 @@ console.log("Total: $" + total);
           greatest = changeEachMonth;
          }
          if (change < least)  {
-          least = changeEastmonth;
-         }      
-      }      
-    }       
+          least = changeEachMonth;
+         }           
+      } 
+    }           
     listDifferences(finances)
-

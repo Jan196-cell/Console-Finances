@@ -112,29 +112,46 @@ return total;
 var total = computeTotal(finances);
 console.log("Total: $" + total);
 
-// average of the changes in Profit/Losses
-   /* change each month finances[i+1][j] - finances[i][j]
-      avarage chages = Total/(Number of months - 1) 
+/* average of the changes in Profit/Losses   
+   avarage changes = Total/(Number of months - 1) 
       */
 
   function listDifferences(finances) {
     var totalDifferences = 0;
     var changeEachMonth = 0;
-    var greatest = 0;
-    var least = 0;
-    var change = 0;
     for (let i=0; i < finances.length - 1; i++) {        
          changeEachMonth = finances[i+1][1] - finances[i][1];         
-           totalDifferences += changeEachMonth;
-           avarageChange = totalDifferences/(totalMonths - 1);
-           console.log("Avarage Change: " + avarageChange)
+           totalDifferences += changeEachMonth;  
+           //  avarageChange = totalDifferences/(totalMonths - 1);
+            //  console.log("Avarage Change: " + avarageChange)          
 
-         if (change > greatest) {
-          greatest = changeEachMonth;
-         }
-         if (change < least)  {
-          least = changeEachMonth;
-         }           
       } 
+let avarageChange = totalDifferences/(totalMonths - 1);
+console.log("Avarage Change: " + avarageChange)
     }           
     listDifferences(finances)
+
+    // Greatest Increase/Decrease in Profits/Losses
+
+    function maxAndMin(changeEachMonth) {
+      
+      var changeEachMonth = 0;
+      let max = changeEachMonth[j];
+      let min = changeEachMonth[j];
+      
+      for (let i=0; i < finances.length - 1; i++) {        
+           changeEachMonth = finances[i+1][1] - finances[i][1];  {
+           for (let j = 0; j < changeEachMonth.length; j++) {          
+            if (changeEachMonth[j] > max[j]) {
+            max = changeEachMonth[j];
+           }
+            if (changeEachMonth[j] < min[j])  {
+            min = changeEachMonth[j];
+           }  
+           return {max, min}         
+        } 
+        
+       }   
+      }  
+    }      
+      console.log("Greatest Increase in Profits/Losses: Feb-2012" + max, "Greatest Decrease in Profits/Losses: Sep-2013" + min )

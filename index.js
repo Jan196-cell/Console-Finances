@@ -112,29 +112,75 @@ console.log("Total Months: " + totalMonths)
  var total = computeTotal(finances);
  console.log("Total: $" + total);
 
+// Greatest and smallest amount from list of changes 
+
+function greatestAndLeast() {
+for (var i = 0; i < finances.length; i++) {
+    currentMonth = finances[i];
+    date = currentMonth[0];
+    amount = currentMonth[1];
+    total += amount;
+    let netChangeSum
+    var change = 0;
+    let greatest
+    let least
+    if (i > 0) change  =  amount - previousAmount;
+    previousAmount = amount;
+    netChangeSum += change;
+
+    if (change > greatest[1]) {
+      greatest = [date, change];
+    }
+
+    if (change < greatest[1]) {
+      least = [date, change];
+    }
+    return{greatest, least}
+}
+console.log("Greatest Increase: " + greatest )
+console.log("Greatest Decrease: " + least )
+}
+greatestAndLeast()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// this is a previos copy below
+
+
 /* average of the changes in Profit/Losses   
    avarage changes = Total/(Number of months - 1) 
-      */
+      
    function listDifferences(finances) {
     var totalDifferences = 0;
     var changeEachMonth = 0;
-    var max = changeEachMonth[0];
-    var min = changeEachMonth[0];
+    var max = changeEachMonth;
+    var min = changeEachMonth;
     for (let i=0; i < finances.length - 1; i++) {        
          changeEachMonth = finances[i+1][1] - finances[i][1];         
            totalDifferences += changeEachMonth
     
-    if (changeEachMonth > max) {
-      max = changeEachMonth
+    if (changeEachMonth[i] > max) {
+      max = changeEachMonth;
     }
     else if (changeEachMonth > min) {
-      min = changeEachMonth
+      min = changeEachMonth;
     }
-  }
-    
-
-     
-       
+  }      
 let avarageChange = Math.round(totalDifferences/(totalMonths - 1) * 100) / 100;
 console.log("Avarage Change: " + avarageChange)
 console.log("Greatest Increase: Feb-2012 " + max)
@@ -142,6 +188,10 @@ console.log("Greatest Decrease: Sep-2013 " + min)
     }       
     listDifferences(finances)
   
+*/
+
+
+
 
 
 

@@ -112,58 +112,8 @@ console.log("Total Months: " + totalMonths)
  var total = computeTotal(finances);
  console.log("Total: $" + total);
 
-// Greatest and smallest amount from list of changes 
 
-function greatestAndLeast() {
-for (var i = 0; i < finances.length; i++) {
-    currentMonth = finances[i];
-    date = currentMonth[0];
-    amount = currentMonth[1];
-    total += amount;
-    let netChangeSum
-    var change = 0;
-    let greatest
-    let least
-    if (i > 0) change  =  amount - previousAmount;
-    previousAmount = amount;
-    netChangeSum += change;
-
-    if (change > greatest[1]) {
-      greatest = [date, change];
-    }
-
-    if (change < greatest[1]) {
-      least = [date, change];
-    }
-    return{greatest, least}
-}
-console.log("Greatest Increase: " + greatest )
-console.log("Greatest Decrease: " + least )
-}
-greatestAndLeast()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// this is a previos copy below
-
-
-/* average of the changes in Profit/Losses   
-   avarage changes = Total/(Number of months - 1) 
+//  Average of the changes in Profit/Losses      
       
    function listDifferences(finances) {
     var totalDifferences = 0;
@@ -172,23 +122,46 @@ greatestAndLeast()
     var min = changeEachMonth;
     for (let i=0; i < finances.length - 1; i++) {        
          changeEachMonth = finances[i+1][1] - finances[i][1];         
-           totalDifferences += changeEachMonth
-    
-    if (changeEachMonth[i] > max) {
-      max = changeEachMonth;
-    }
-    else if (changeEachMonth > min) {
-      min = changeEachMonth;
-    }
+           totalDifferences += changeEachMonth  
   }      
 let avarageChange = Math.round(totalDifferences/(totalMonths - 1) * 100) / 100;
 console.log("Avarage Change: " + avarageChange)
-console.log("Greatest Increase: Feb-2012 " + max)
-console.log("Greatest Decrease: Sep-2013 " + min)
+
     }       
     listDifferences(finances)
-  
-*/
+
+ 
+// Greatest and smallest amount from list of changes 
+
+
+  let previousAmount = finances[0][1]
+  let netChangeSum = 0;
+  let greatest = [finances[0][0], 0];
+  let least = [finances[0][0], 0];
+
+function greatestAndLeast() {
+  for (var i = 1; i < finances.length; i++) {
+      const currentMonth = finances[i];
+      const date = currentMonth[0];
+      const amount = currentMonth[1];
+
+      let change = amount - previousAmount;
+      previousAmount = amount;
+      netChangeSum += change;
+      
+      if (change > greatest[1]) {
+        greatest = [date, change];
+      }
+
+      if (change < least[1]) {
+        least = [date, change];
+      }   
+  }
+  return{greatest, least}
+  }
+greatestAndLeast();
+console.log("Greatest Increase: " + greatest[0] + " ($" + greatest[1] + ")");
+console.log("Greatest Decrease: " + least[0] + " ($" + least[1] + ")");
 
 
 
@@ -198,69 +171,14 @@ console.log("Greatest Decrease: Sep-2013 " + min)
 
 
 
-// 
-// function listDifferences() {
-  // var totalDifferences = 0;
-  // var changeEachMonth = 0;
-  // var net = 0;
-  // var changeArray = []
-  // var greatestChange = ['', 0]
 
-  
-  // for (let i = 0; i < finances.length; i++) {
-    // for (let j = 0; j < finances[i].length; j++) {
-      // if (typeof finances[i][j] !== 'string') {
-        // changeEachMonth = finances[i+1][1] - finances[i][1];
-        // net = finances[i][j]
-        // changeArray.push(changeEachMonth)
 
-        // if(changeEachMonth > greatestChange[1]){
-          // greatestChange = [finances[i][0], finances[i][1]]
-        // }
-      // }
-    // } 
-  
-    //  changeEachMonth = finances[i+1][1] - finances[i][1];         
-    //    totalDifferences += changeEachMonth;  
-    //  avarageChange = totalDifferences/(totalMonths - 1);
-    //  console.log("Avarage Change: " + avarageChange)          
 
-//  }
-// for (let i = 0; i < changeArray.length; i++) {
-// totalDifferences += changeArray[i]
-// }
 
-// var average = Math.round((totalDifferences / 86) * 100) / 100
 
-  // let avarageChange = totalDifferences / (totalMonths - 1);
-  // console.log("Avarage Change: " + average)
-  // console.log('greatest change:' + greatestChange);
-// }
-// listDifferences() 
 
-// Greatest Increase/Decrease in Profits/Losses
 
-// function maxAndMin() {
 
-//   var changeEachMonth = 0;
-//   let max = changeEachMonth;
-//   let min = changeEachMonth;
 
-//   for (let i = 0; i < finances.length - 1; i++) {
-//     changeEachMonth = finances[i + 1][1] - finances[i][1]; {
-//       for (let j = 0; j < changeEachMonth.length; j++) {
 
-//         if (changeEachMonth[j] > max[j]) {
-//           max = changeEachMonth[j];
-//         }
-//         if (changeEachMonth[j] < min[j]) {
-//           min = changeEachMonth[j];
-//         }
-//         return { max, min }
-//       }
-//     }
-//   }
 
-//   console.log("Greatest Increase in Profits/Losses: Feb-2012" + max)
-//   console.log("Greatest Decrease in Profits/Losses: Sep-2013" + min)
-// }

@@ -20,7 +20,7 @@ https://..............................
 
 You can also see a snapshot of the website on the photo attached below:
 
-...........................................
+![image](https://github.com/Jan196-cell/Console-Finances/assets/127429313/159f2db2-de01-456d-a26b-37046b2bec14)
 
 ## Installation
 
